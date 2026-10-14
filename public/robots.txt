@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://adincomara.my.id/sitemap.xml
+Sitemap: https://adincomara.my.id/sitemap-index.xml

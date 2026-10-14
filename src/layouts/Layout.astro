@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  author?: string;
+  canonicalURL?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Adin Comara — Software Engineer | Laravel, PHP, AI & Full-Stack Developer",
+  description = "Adin Comara (Maulana Muhammadin Comara) — Software Engineer dari Semarang, Indonesia. Spesialisasi Laravel, PHP, Vue.js, AI Vision & LLM integration. Portfolio, proyek, dan kontak profesional.",
+  keywords = "Adin Comara, Maulana Muhammadin Comara, adincomara, Software Engineer, Laravel Developer, PHP Developer, Full-Stack Developer, AI Developer, Semarang, Indonesia, Vue.js, LLM, Vision OCR, Portfolio",
+  author = "Maulana Muhammadin Comara",
+  canonicalURL = "https://adincomara.my.id/",
+  ogImage = "https://adincomara.my.id/profile.jpg",
+} = Astro.props;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Maulana Muhammadin Comara",
+  "alternateName": ["Adin Comara", "adincomara"],
+  "url": "https://adincomara.my.id",
+  "jobTitle": "Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance / Independent"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Semarang",
+    "addressRegion": "Jawa Tengah",
+    "addressCountry": "ID"
+  },
+  "email": "adincomara@gmail.com",
+  "sameAs": [
+    "https://github.com/adincomara",
+    "https://www.freelancer.es/u/adincomara"
+  ],
+  "knowsAbout": ["Laravel", "PHP", "Vue.js", "JavaScript", "AI Vision", "LLM Integration", "Full-Stack Development", "OCR", "Python"],
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Universitas Dian Nuswantoro"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+
+  <!-- Primary Meta SEO Tags -->
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+  <meta name="author" content={author} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Adin Comara Portfolio" />
+  <meta property="og:locale" content="id_ID" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD Structured Data Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+  <!-- Dark Mode Init Script (No FOUC) -->
+  <script is:inline>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 min-h-screen bg-tech-grid-light dark:bg-tech-grid-dark transition-colors duration-300 selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300 antialiased overflow-x-hidden">
+  <slot />
+</body>
+</html>
